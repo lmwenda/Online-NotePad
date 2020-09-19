@@ -1,7 +1,10 @@
 package com.company;
 
 // Imports
+import javafx.stage.FileChooser;
+
 import javax.swing.*;
+import java.io.File;
 
 public class app {
 
@@ -46,6 +49,18 @@ public class app {
         i4=new JMenuItem("New File");
         i5=new JMenuItem("Find Help");
         i6=new JMenuItem("Settings");
+
+        // Action Liseners
+        i2.addActionListener(action ->{
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Specify a text file to save.");
+
+            int userSelection = fileChooser.showSaveDialog(frame);
+            if (userSelection == JFileChooser.APPROVE_OPTION) {
+                File fileToSave = fileChooser.getSelectedFile();
+                System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+            }
+        });
 
         // Adding the Menu's together
         submenu.add(i4); submenu.add(i1); submenu.add(i2); submenu.add(i3); submenu.add(i6);
